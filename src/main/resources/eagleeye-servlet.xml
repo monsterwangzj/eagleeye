@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd  
+             http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd              
+             http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+	<mvc:annotation-driven />
+
+	<context:component-scan base-package="com.chengyi.eagleeye.controller" />
+
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value>/WEB-INF/view/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+		<property name="url" value="jdbc:mysql://182.92.222.78:3306/eagleeyetest?useUnicode=true&amp;autoReconnect=true&amp;characterEncoding=gbk"></property>
+		<property name="username" value="wangnewton"></property>
+		<property name="password" value="Wzj123456789"></property>
+	</bean>
+
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="current_session_context_class">thread</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+
+		<property name="annotatedClasses">
+			<list>
+				<value>com.chengyi.eagleeye.model.ItemGroup</value>
+				<value>com.chengyi.eagleeye.model.ServiceItemGroup</value>
+				<value>com.chengyi.eagleeye.model.Item</value>
+				<value>com.chengyi.eagleeye.model.ItemMonitor</value>
+				<value>com.chengyi.eagleeye.model.ItemMonitorGroup</value>
+				<value>com.chengyi.eagleeye.model.User</value>
+				<value>com.chengyi.eagleeye.model.Monitor</value>
+				<value>com.chengyi.eagleeye.model.MonitorGroup</value>
+				<value>com.chengyi.eagleeye.model.MonitorGroupMonitor</value>
+				<value>com.chengyi.eagleeye.model.DataCenter</value>
+				<value>com.chengyi.eagleeye.model.DataCenterServer</value>
+				<value>com.chengyi.eagleeye.model.AlarmHistory</value>
+				<value>com.chengyi.eagleeye.model.BreakDownHistory</value>
+				
+				<value>com.chengyi.eagleeye.model.message.http.HttpMessage</value>
+				<value>com.chengyi.eagleeye.model.message.http.HttpMessageStat</value>
+				
+				<value>com.chengyi.eagleeye.model.message.ping.PingMessage</value>
+				<value>com.chengyi.eagleeye.model.message.ping.PingMessageStat</value>
+				
+				<value>com.chengyi.eagleeye.model.message.nginx.NginxMessage</value>
+				<value>com.chengyi.eagleeye.model.message.nginx.NginxMessageStat</value>
+				
+				<value>com.chengyi.eagleeye.model.message.redis.RedisMessage</value>
+				<value>com.chengyi.eagleeye.model.message.redis.RedisMessageStat</value>
+				
+			</list>
+		</property>
+	</bean>
+
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="dao" class="com.chengyi.eagleeye.patrol.DaoImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	<bean id="patrol" class="com.chengyi.eagleeye.patrol.Monitor" init-method="init">
+		<property name="dao"><ref bean="dao" /></property>
+		<property name="itemMonitorMgr"><ref bean="itemMonitorMgr" /></property>
+		<property name="itemMonitorGroupMgr"><ref bean="itemMonitorGroupMgr" /></property>
+		<property name="monitorMgr"><ref bean="monitorMgr" /></property>
+		<property name="monitorGroupMonitorMgr"><ref bean="monitorGroupMonitorMgr" /></property>
+		<property name="dataCenterServerMgr"><ref bean="dataCenterServerMgr" /></property>
+		<property name="alarmHistoryMgr"><ref bean="alarmHistoryMgr" /></property>
+		<property name="breakDownHistoryMgr"><ref bean="breakDownHistoryMgr" /></property>
+	</bean>
+	
+	<bean id="pendingData" class="com.chengyi.eagleeye.patrol.PendingData" init-method="execute" />
+	<bean id="statHttpMessage" class="com.chengyi.eagleeye.network.http.StatHttpMessage" init-method="execute" />
+	<bean id="pingHttpMessage" class="com.chengyi.eagleeye.network.ping.StatPingMessage" init-method="execute" />
+	<bean id="statNginxMessage" class="com.chengyi.eagleeye.network.nginx.StatNginxMessage" init-method="execute" />
+	<bean id="statRedisMessage" class="com.chengyi.eagleeye.network.redis.StatRedisMessage" init-method="execute" />
+	
+	<bean id="userMgr" class="com.chengyi.eagleeye.service.UserMgr"/>
+	
+	<bean id="monitorMgr" class="com.chengyi.eagleeye.service.MonitorMgr"/>
+	
+	<bean id="monitorGroupMgr" class="com.chengyi.eagleeye.service.MonitorGroupMgr"/>
+	
+	<bean id="monitorGroupMonitorMgr" class="com.chengyi.eagleeye.service.MonitorGroupMonitorMgr"/>
+
+	<bean id="itemMgr" class="com.chengyi.eagleeye.service.ItemMgr"/>
+
+	<bean id="itemGroupMgr" class="com.chengyi.eagleeye.service.ItemGroupMgr"/>
+	
+	<bean id="serviceItemGroupMgr" class="com.chengyi.eagleeye.service.ServiceItemGroupMgr"/>
+
+	<bean id="itemMonitorMgr" class="com.chengyi.eagleeye.service.ItemMonitorMgr"/>
+
+	<bean id="itemMonitorGroupMgr" class="com.chengyi.eagleeye.service.ItemMonitorGroupMgr"/>
+
+	<bean id="dataCenterMgr" class="com.chengyi.eagleeye.service.DataCenterMgr" />
+	
+	<bean id="dataCenterServerMgr" class="com.chengyi.eagleeye.service.DataCenterServerMgr" />
+	
+	<bean id="alarmHistoryMgr" class="com.chengyi.eagleeye.service.AlarmHistoryMgr" />
+	
+	<bean id="messageMgr" class="com.chengyi.eagleeye.service.MessageMgr" />
+	
+	<bean id="breakDownHistoryMgr" class="com.chengyi.eagleeye.service.BreakDownHistoryMgr" />
+
+</beans>

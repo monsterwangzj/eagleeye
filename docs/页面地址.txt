@@ -1,0 +1,99 @@
+1，首页
+http://localhost/index.jsp
+
+
+2，登录页面
+http://localhost/login.do
+
+
+3，登录提交
+http://localhost/login/signin.do
+
+
+4，创建新分组
+页面：http://localhost/item/newgroup.do
+ajax接口：http://localhost/itemgroup/save.do?gname=yyy1	groupName：分组名称		备注：用户需在登录状态
+
+
+5，修改分组
+http://localhost/itemgroup/update.do?gid=3&gname=MY%E7%B3%BB%E7%BB%9F	gid：分组id	gname：新的分组名称
+
+
+6，删除分组
+http://localhost/itemgroup/del.do?gid=3
+
+
+
+7,设置相关
+添加监控人：
+http://localhost/user/addmonitor.do
+	name
+	cellphone
+	email
+	weixin
+
+删除监控人
+http://localhost/user/delmonitor.do?id=
+
+修改监控人：
+http://localhost/user/updatemonitor.do
+	id
+	name
+	cellphone
+	email
+	weixin
+	
+添加报警组：
+http://localhost/user/addmonitorgroup.do
+	gname
+
+删除报警组：
+http://localhost/user/delmonitorgroup.do?gid=
+
+修改报警组名称：
+http://localhost/user/renamemonitorgroup.do
+	gid
+	gname
+	
+设置报警组成员：
+http://localhost/config/setmonitorgroup.do?gid=
+
+分页获取某报警组成员
+http://localhost/config/getmonitors.do
+	gid:报警组id
+	p:页号
+	返回json结果：monitors代表该页所有的监控人；monitorMap代表过去选中的监控人，
+
+提交编辑报警组成员
+http://localhost/config/reconfigmonitorgroup.do
+	gid=
+	data=2@1,2;3@2,4	1短信；2邮件；4由你   
+
+
+8,项目相关
+删除项目
+http://localhost/item/delete.do?id=12 	id：项目id
+
+暂停项目
+http://localhost/item/freeze.do?id=12 	id：项目id
+
+启动项目
+http://localhost/item/enable.do?id=12 	id：项目id
+
+
+9,新建项目
+http://localhost/itemgroup/getMonitorsByGid.do?gid= 	gid代表报警组id
+
+
+question问题：
+10。1, 获取项目分组列表
+http://localhost/itemgroup/list.do 返回json数据
+
+10.2, 获取报警组列表
+http://localhost//monitorgroup/list.do 返回json数据
+
+10.3， newitem.jsp 页面变量defaultMonitorsMap
+
+10.4，获取某报警组成员及报警通道列表
+http://localhost/groupmonitor/list.do?gid=35 gid：报警组id
+
