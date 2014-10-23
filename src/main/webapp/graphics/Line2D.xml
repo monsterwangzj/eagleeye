@@ -1,0 +1,28 @@
+<graph caption='Usability' subcaption='' xAxisName='Time' yAxisMinValue='15000' yAxisName='usability' 
+	decimalPrecision='0' formatNumberScale='0' showNames='1' showValues='0'  showAlternateHGridColor='1' 
+	AlternateHGridColor='ff5904' divLineColor='ff5904' divLineAlpha='20' alternateHGridAlpha='5' >
+   <set name='00' value='50' hoverText='December' />
+   <set name='01' value='67' hoverText='January'/>
+   <set name='02' value='90' hoverText='February'/>
+   <set name='03' value='56' hoverText='March'/>
+   <set name='04' value='87' hoverText='April'/>
+   <set name='05' value='76' hoverText='May'/>
+   <set name='06' value='65' hoverText='June'/>
+   <set name='07' value='56' hoverText='July'/>
+   <set name='08' value='77' hoverText='August'/>
+   <set name='09' value='66' hoverText='September'/>
+   <set name='10' value='88' hoverText='October'/>
+   <set name='11' value='90' hoverText='November' />
+   <set name='12' value='100' hoverText='December' />
+   <set name='13' value='100' hoverText='January'/>
+   <set name='14' value='100' hoverText='February'/>
+   <set name='15' value='100' hoverText='March'/>
+   <set name='16' value='100' hoverText='April'/>
+   <set name='17' value='75' hoverText='May'/>
+   <set name='18' value='100' hoverText='June'/>
+   <set name='19' value='100' hoverText='July'/>
+   <set name='20' value='100' hoverText='August'/>
+   <set name='21' value='100' hoverText='September'/>
+   <set name='22' value='100' hoverText='October'/>
+   <set name='23' value='99' hoverText='November' />
+</graph>

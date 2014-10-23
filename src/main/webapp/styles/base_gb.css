@@ -1,0 +1,26 @@
+@charset "gb2312";
+/* CSS Document */
+*{margin:0; padding:0; border:0;}
+ul,ol,dl,li,dt,dd{list-style:none;}
+a:hover,a:visited{color:#ccc; text-decoration:none;}
+a:hover{color:#ccc; text-decoration: underline;}
+.fl{ float:left;}
+.fr{ float:right;}
+body{font-family:Arial,Helvetica,sans-serif; font-size:12px; background-color:#0d0d05;}
+h3, h4{ font-size:16px;font-family:"microsoft yahei","ËÎÌו" Gadget, sans-serif;font-weight:normal; }
+/*container */
+.w_960{ width:960px; margin:0 auto; background-color:#210504; height:auto; overflow:hidden;}
+.wap{ width:930px; padding-bottom:20px; clear:both; padding:0px 15px;}
+.bg{background:url(images/bg.jpg) no-repeat scroll center top transparent; height:auto; overflow:hidden;}
+/*list*/
+ul.list { width:930px;}
+ul.list li{ float:left; margin-right:15px; height:200px;width:140px;}
+ul.list li img{ width:140px; height:90px;}
+ul.list li h4{ height:18px; padding-top:10px; width:140px; font-size:12px; color:#cccccc; line-height:18px; text-align:left; overflow:hidden;}
+ul.list li p{ padding-top:5px;}
+ul.list li p a{ display:block; border:1px solid #1a0504; float:left; height:18px; width:38px; line-height:20px;background-color:#340606; text-align:center; color:#a12521;}
+ul.list li p span{display:block; float:right; color:#828282; padding-right:5px;}
+/*page*/
+.page{ width:930px; text-align:center; clear:both; height:30px; margin:10px 0px;}
+.page a{ margin:0 5px; color:#999;}
+.page a.on{ color:#f0cd0c;}

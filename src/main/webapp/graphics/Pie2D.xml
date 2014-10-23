@@ -1,0 +1,4 @@
+<graph decimalPrecision='2'  bgAlpha='60' bgColor='3C78A5' >
+	<set name='ERROR' value='7' />
+	<set name='Normal' value='93' />
+</graph>

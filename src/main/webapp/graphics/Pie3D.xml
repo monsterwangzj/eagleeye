@@ -1,0 +1,4 @@
+<graph showNames='1' decimalPrecision='0' bgColor='2E4A89' bgAlpha='70' animation='1' pieRadius='160' pieSliceDepth='12' showLegend='1'>
+	<set name='DOWN' value='0' isSliced="0"/>
+	<set name='OK' value='9' isSliced="0"/>
+</graph>
