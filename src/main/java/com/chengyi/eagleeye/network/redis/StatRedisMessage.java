@@ -46,7 +46,7 @@ public class StatRedisMessage {
 		new Thread() {
 			public void run() {
 				String localIp = NetUtil.getLocalIp();
-				if (localIp != null && (localIp.contains("32.119") || localIp.contains("32.67"))) {
+				if (localIp != null && (localIp.contains("163.157") || localIp.contains("32.67"))) {
 					while (true) {
 						final SimpleDateFormat mFormatDateTime = new SimpleDateFormat("mm");
 						String datestr = DateUtil.format(new Date(), mFormatDateTime);
