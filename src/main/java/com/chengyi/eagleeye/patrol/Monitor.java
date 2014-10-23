@@ -131,7 +131,8 @@ public class Monitor {
 		}
 		
 		boolean statFlag = true;
-		if (localIp != null && (localIp.contains("32.119") || localIp.contains("32.67"))) {
+		if (localIp != null) {
+//	    if (localIp != null && (localIp.contains("32.119") || localIp.contains("32.67"))) {
 			if (statFlag) 
 				dostat();
 			
@@ -175,14 +176,14 @@ public class Monitor {
 				for (int i = 0; i < serverArr.length; i++) {
 					final String serverIp = serverArr[i];
 
-					HttpParam httpParam = new HttpParam(item.getId(), item.getUri(), serverIp, httpOptions.getHttpTimeout(), httpOptions.getResultMatchPattern(), httpOptions.getResultMatchPatternStatus());
+					HttpParam httpParam = new HttpParam(item.getId(), item.getUri(), serverIp, httpOptions.getHttpTimeout(), httpOptions.getHttpMethod(), httpOptions.getResultMatchPattern(), httpOptions.getResultMatchPatternStatus());
 					Thread thread = new Thread(new HttpThread(item, httpParam));
 					thread.setName(item.getId() + "-" + serverIp);
 					threadMap.put(thread.getName(), thread);
 					thread.start();
 				}
 			} else {
-				HttpParam httpParam = new HttpParam(item.getId(), item.getUri(), null, httpOptions.getHttpTimeout(), httpOptions.getResultMatchPattern(), httpOptions.getResultMatchPatternStatus());
+				HttpParam httpParam = new HttpParam(item.getId(), item.getUri(), null, httpOptions.getHttpTimeout(), httpOptions.getHttpMethod(), httpOptions.getResultMatchPattern(), httpOptions.getResultMatchPatternStatus());
 				Thread thread = new Thread(new HttpThread(item, httpParam));
 				thread.setName(item.getId().toString());
 				threadMap.put(thread.getName(), thread);

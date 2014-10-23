@@ -49,11 +49,21 @@ public class HttpParam extends BaseParam implements Serializable {
 		setUri(uri);
 	}
 
-	public HttpParam(Long itemId, String uri, String bindAddress, int timeout, String resultMatchPattern, byte resultMatchPatternStatus) {
+	public HttpParam(Long itemId, String uri, String bindAddress, int timeout, String httpMethod, String resultMatchPattern, byte resultMatchPatternStatus) {
 		setItemId(itemId);
 		setUri(uri);
 		setBindAddress(bindAddress);
 		this.timeout = timeout;
+		if (httpMethod.equals(HttpRequestMethod.GET.toString())) {
+		    this.method = HttpRequestMethod.GET;
+		} else if (httpMethod.equals(HttpRequestMethod.POST.toString())) {
+		    this.method = HttpRequestMethod.POST;
+		} else if (httpMethod.equals(HttpRequestMethod.HEAD.toString())) {
+            this.method = HttpRequestMethod.HEAD;
+        } else { // get by default
+            this.method = HttpRequestMethod.GET;
+        }
+		
 		this.resultMatchPattern = resultMatchPattern;
 		this.resultMatchPatternStatus = resultMatchPatternStatus;
 	}

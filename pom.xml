@@ -64,6 +64,21 @@
 			<classifier>jdk15</classifier>
 		</dependency>
 		<dependency>
+		  <groupId>com.alibaba.external</groupId>
+		  <artifactId>sourceforge.ezmorph</artifactId>
+		  <version>1.0.6</version>
+		</dependency>
+		<dependency>
+		  <groupId>net.sf.morph</groupId>
+		  <artifactId>morph</artifactId>
+		  <version>1.1.1</version>
+		</dependency>
+		<dependency>
+		  <groupId>commons-beanutils</groupId>
+		  <artifactId>commons-beanutils</artifactId>
+		  <version>1.8.3</version>
+		</dependency>
+		<dependency>
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
 			<version>1.4</version>

@@ -22,7 +22,7 @@ public class RedisUtil {
 	public static ShardedJedisPool shardedJedisPool = null;
 	static {
 		List<JedisShardInfo> jedisShardInfos = new ArrayList<JedisShardInfo>();
-		jedisShardInfos.add(new JedisShardInfo("122.11.32.67", 6399, 1000));
+		jedisShardInfos.add(new JedisShardInfo("stockcommunity.d5795aqcn.alipay.net", 6379, 1000));
 
 		JedisPoolConfig poolConfig = new JedisPoolConfig();
 		poolConfig.setMaxActive(60000);
