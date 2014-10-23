@@ -189,6 +189,16 @@ strong.username{
               <td width="87%" colspan="3" class="tip"> 选择HTTP请求的方法。POST 方法用于提交表单，比如用户登录；HEAD 方法可以用于请求大文件但不下载正文。</td>
           </tr>
           
+          
+          <tr class="shidden">
+              <td width="13%" class="ri">post提交参数：</td>
+              <td width="87%" colspan="3"><textarea name="postParam" cols="" rows="3"></textarea></td>
+          </tr>
+          <tr class="shidden">
+              <td width="13%" class="ri"></td>
+              <td width="87%" colspan="3" class="tip">对于POST提交方法，你可以指定提交的参数列表，比如：operationType=alipay.secuprod.appconfig.globalConfig&requestData=[{"mainVersion":"1.0.001"}]</td>
+          </tr>
+          
           <tr class="shidden">
               <td width="13%" class="ri">HTTP超时时间：</td>
               <td width="87%" colspan="3"><input name="timeout" type="text" value="5000"> 毫秒</td>
@@ -332,7 +342,6 @@ token=d906b69209d9de92789fcd65a1a5d210; pvid=954970634; flv=10.0</td>
 			             </tr>
               		<%}
               	 } %>
-
 
             </tbody></table>
           </td></tr>

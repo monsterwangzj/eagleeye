@@ -148,6 +148,9 @@ public class ItemController extends BaseController {
 		String retryInterval = request.getParameter("retryinterval");
 		String continuousReminder = request.getParameter("continuousreminder");
 		String method = request.getParameter("httpmethod");
+		
+		String postParam = request.getParameter("postParam");
+		
 		Integer httpTimeout = CommonUtil.getInteger(request.getParameter("timeout"));
 		if (httpTimeout == null || httpTimeout <= 0 || httpTimeout > 120000) {
 			httpTimeout = HttpOption.ITEM_HTTPTIMEOUT_DEFAULT;
@@ -170,6 +173,7 @@ public class ItemController extends BaseController {
 		
 		HttpOption httpOption = new HttpOption();
 		httpOption.setHttpMethod(method);
+		if (StringUtils.isNotEmpty(postParam)) httpOption.setPostParam(postParam);
 		httpOption.setHttpTimeout(httpTimeout);
 		
 		if (StringUtils.isNotEmpty(resultMatchPattern)) httpOption.setResultMatchPattern(resultMatchPattern);
@@ -396,6 +400,9 @@ public class ItemController extends BaseController {
 //		String retryInterval = request.getParameter("retryinterval");
 		String continuousReminder = request.getParameter("continuousreminder");
 		String method = request.getParameter("httpmethod");
+		
+		String postParam = request.getParameter("postParam");
+		
 		Integer httpTimeout = CommonUtil.getInteger(request.getParameter("timeout"));
 		if (httpTimeout == null || httpTimeout <= 0 || httpTimeout > 120000) {
 			httpTimeout = HttpOption.ITEM_HTTPTIMEOUT_DEFAULT;
@@ -417,6 +424,7 @@ public class ItemController extends BaseController {
 		if (method == null) method = HttpRequestMethod.GET.toString();
 		HttpOption httpOption = new HttpOption();
 		httpOption.setHttpMethod(method);
+		if (StringUtils.isNotEmpty(postParam)) httpOption.setPostParam(postParam);
 		httpOption.setHttpTimeout(httpTimeout);
 		
 		httpOption.setResultMatchPattern(resultMatchPattern);

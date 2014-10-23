@@ -25,23 +25,25 @@ public class EmailSenderImpl implements EagleSender {
 
 	private static final String mailFromPassword_163 = "ku6sys1"; // Syswzj,888
 
-	// ku6.com
-	private static final String mailHost_ku6= "122.11.32.87";
-
-	private static final String mailFrom_ku6 = "ku6sys@ku6.com";
-
-	private static final String mailFromPassword_ku6 = "ku6sys1";
+//	// ku6.com
+//	private static final String mailHost_ku6= "122.11.32.87";
+//
+//	private static final String mailFrom_ku6 = "ku6sys@ku6.com";
+//
+//	private static final String mailFromPassword_ku6 = "ku6sys1";
 	
 	private static final String content = "This is a system email from MonitorSystem, pls do not reply.";
 
 	public boolean send(String mailTo, String mailSubject) {
 		SimpleEmail email = new SimpleEmail();
-//		email.setHostName(mailHost_163);
-		email.setHostName(mailHost_ku6);
-		email.setAuthentication(mailFrom_ku6, mailFromPassword_ku6);
+		email.setHostName(mailHost_163);
+//		email.setHostName(mailHost_ku6);
+//		email.setAuthentication(mailFrom_ku6, mailFromPassword_ku6);
+		email.setAuthentication(mailFrom_163, mailFromPassword_163);
 		try {
 			email.addTo(mailTo);
-			email.setFrom(mailFrom_ku6, "Probe");
+//			email.setFrom(mailFrom_ku6, "Probe");
+			email.setFrom(mailFrom_163, "Probe");
 			email.setSubject(mailSubject);
 			email.setMsg(content);
 			email.setCharset("GBK");
@@ -58,11 +60,14 @@ public class EmailSenderImpl implements EagleSender {
 	
 	public boolean send(String mailTo, String mailSubject, String content) {
 		HtmlEmail email = new HtmlEmail();
-		email.setHostName(mailHost_ku6);
-		email.setAuthentication(mailFrom_ku6, mailFromPassword_ku6);
+//		email.setHostName(mailHost_ku6);
+//		email.setAuthentication(mailFrom_ku6, mailFromPassword_ku6);
+		email.setHostName(mailHost_163);
+        email.setAuthentication(mailFrom_163, mailFromPassword_163);
 		try {
 			email.addTo(mailTo);
-			email.setFrom(mailFrom_ku6, "DailyReport");
+//			email.setFrom(mailFrom_ku6, "DailyReport");
+			email.setFrom(mailFrom_163, "DailyReport");
 			email.setSubject(mailSubject);
 			email.setMsg(content);
 			email.setCharset("GBK");

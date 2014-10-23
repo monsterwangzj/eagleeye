@@ -2,8 +2,10 @@ package com.chengyi.eagleeye.network.http;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 import org.apache.log4j.Logger;
@@ -49,7 +51,7 @@ public class HttpParam extends BaseParam implements Serializable {
 		setUri(uri);
 	}
 
-	public HttpParam(Long itemId, String uri, String bindAddress, int timeout, String httpMethod, String resultMatchPattern, byte resultMatchPatternStatus) {
+	public HttpParam(Long itemId, String uri, String bindAddress, int timeout, String httpMethod, String postParam, String resultMatchPattern, byte resultMatchPatternStatus) {
 		setItemId(itemId);
 		setUri(uri);
 		setBindAddress(bindAddress);
@@ -63,6 +65,20 @@ public class HttpParam extends BaseParam implements Serializable {
         } else { // get by default
             this.method = HttpRequestMethod.GET;
         }
+		
+		if (StringUtils.isNotEmpty(postParam)) {
+		    String[] sections = postParam.split("&");
+		    if (sections != null && sections.length > 0) {
+		        Map<String, String> inputParam = new HashMap<String, String>();
+		        for (String section : sections) {
+		            String[] kv = section.split("=");
+		            if (kv != null && kv.length == 2) 
+		                inputParam.put(kv[0], kv[1]);
+		        }
+		        
+		        this.postParams = inputParam;
+		    }
+		}
 		
 		this.resultMatchPattern = resultMatchPattern;
 		this.resultMatchPatternStatus = resultMatchPatternStatus;

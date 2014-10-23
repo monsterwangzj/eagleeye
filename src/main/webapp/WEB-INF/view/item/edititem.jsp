@@ -217,14 +217,23 @@ strong.username{
               		<span class="ra01 <%=(httpOption.getHttpMethod().equalsIgnoreCase("head") ? "ra02" : "")%>" style="margin-left:0px;"></span>
               		<span style="margin-left:0px;">HEAD</span>
               	</span>
-              	<input type="radio" name="httpmethod" value="GET" class="mget"  style="display:none;"/>
-              	<input type="radio" name="httpmethod" value="POST" class="mpost" style="display:none;"/>
-              	<input type="radio" name="httpmethod" value="HEAD" class="mhead" style="display:none;"/>
+              	<input type="radio" name="httpmethod" value="GET" class="mget" <%=(httpOption.getHttpMethod().equalsIgnoreCase("get") ? "checked=\"checked\"" : "")%> style="display:none;"/>
+              	<input type="radio" name="httpmethod" value="POST" class="mpost" <%=(httpOption.getHttpMethod().equalsIgnoreCase("post") ? "checked=\"checked\"" : "")%> style="display:none;"/>
+              	<input type="radio" name="httpmethod" value="HEAD" class="mhead" <%=(httpOption.getHttpMethod().equalsIgnoreCase("head") ? "checked=\"checked\"" : "")%> style="display:none;"/>
               </td>
           </tr>
           <tr class="tip shidden">
               <td width="13%" class="ri"></td>
               <td width="87%" colspan="3" class="tip"> 选择HTTP请求的方法。POST 方法用于提交表单，比如用户登录；HEAD 方法可以用于请求大文件但不下载正文。</td>
+          </tr>
+          
+          <tr class="shidden">
+              <td width="13%" class="ri">post提交参数：</td>
+              <td width="87%" colspan="3"><textarea name="postParam" cols="" rows="3"><%=httpOption.getPostParam() %></textarea></td>
+          </tr>
+          <tr class="shidden">
+              <td width="13%" class="ri"></td>
+              <td width="87%" colspan="3" class="tip">对于POST提交方法，你可以指定提交的参数列表，比如：operationType=alipay.secuprod.appconfig.globalConfig&requestData=[{"mainVersion":"1.0.001"}]</td>
           </tr>
           
           <tr class="shidden">

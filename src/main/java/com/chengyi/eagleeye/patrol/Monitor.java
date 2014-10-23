@@ -176,14 +176,14 @@ public class Monitor {
 				for (int i = 0; i < serverArr.length; i++) {
 					final String serverIp = serverArr[i];
 
-					HttpParam httpParam = new HttpParam(item.getId(), item.getUri(), serverIp, httpOptions.getHttpTimeout(), httpOptions.getHttpMethod(), httpOptions.getResultMatchPattern(), httpOptions.getResultMatchPatternStatus());
+					HttpParam httpParam = new HttpParam(item.getId(), item.getUri(), serverIp, httpOptions.getHttpTimeout(), httpOptions.getHttpMethod(), httpOptions.getPostParam(), httpOptions.getResultMatchPattern(), httpOptions.getResultMatchPatternStatus());
 					Thread thread = new Thread(new HttpThread(item, httpParam));
 					thread.setName(item.getId() + "-" + serverIp);
 					threadMap.put(thread.getName(), thread);
 					thread.start();
 				}
 			} else {
-				HttpParam httpParam = new HttpParam(item.getId(), item.getUri(), null, httpOptions.getHttpTimeout(), httpOptions.getHttpMethod(), httpOptions.getResultMatchPattern(), httpOptions.getResultMatchPatternStatus());
+				HttpParam httpParam = new HttpParam(item.getId(), item.getUri(), null, httpOptions.getHttpTimeout(), httpOptions.getHttpMethod(), httpOptions.getPostParam(), httpOptions.getResultMatchPattern(), httpOptions.getResultMatchPatternStatus());
 				Thread thread = new Thread(new HttpThread(item, httpParam));
 				thread.setName(item.getId().toString());
 				threadMap.put(thread.getName(), thread);

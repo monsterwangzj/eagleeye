@@ -14,6 +14,8 @@ public class HttpOption implements Serializable {
 	// http request timeout in ms, 5000ms by default
 	private int httpTimeout = ITEM_HTTPTIMEOUT_DEFAULT;
 
+	private String postParam;
+	
 	private String resultMatchPattern;
 
 	private byte resultMatchPatternStatus;
@@ -46,7 +48,15 @@ public class HttpOption implements Serializable {
 		this.httpTimeout = httpTimeout;
 	}
 
-	public String getResultMatchPattern() {
+	public String getPostParam() {
+        return postParam;
+    }
+
+    public void setPostParam(String postParam) {
+        this.postParam = postParam;
+    }
+
+    public String getResultMatchPattern() {
 		return resultMatchPattern;
 	}
 
