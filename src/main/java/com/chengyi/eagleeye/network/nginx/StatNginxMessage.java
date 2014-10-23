@@ -89,7 +89,7 @@ public class StatNginxMessage {
 	private Long getNginxMessageStartTime() {
 		Long startTime = RedisUtil.getLong(nginxMessageStartTimeKey);
 		if (startTime == null) {
-			startTime = 1396500000000L; // 2014-02-12 22:00:00
+			startTime = 1413993600000L; // 2014-10-23 00:00:00 
 		}
 		return startTime;
 	}

@@ -86,7 +86,7 @@ public class StatTomcatMessage {
 	private Long getNginxMessageStartTime() {
 		Long startTime = RedisUtil.getLong(nginxMessageStartTimeKey);
 		if (startTime == null) {
-			startTime = 1392213600000L; // 2014-02-12 22:00:00
+			startTime = 1413993600000L; // 2014-10-23 00:00:00 
 		}
 		return startTime;
 	}
