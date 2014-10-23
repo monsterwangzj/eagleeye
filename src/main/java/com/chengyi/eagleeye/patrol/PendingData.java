@@ -37,7 +37,7 @@ public class PendingData {
 	public void execute() {
 		String localIp = NetUtil.getLocalIp();
 //		if (localIp != null && (localIp.contains("132.231") || localIp.contains("32.119") || localIp.contains("32.67"))) {
-		if (localIp != null && (localIp.contains("32.119") || localIp.contains("32.67"))) {
+		if (localIp != null && (localIp.contains("163.157") || localIp.contains("32.67"))) {
 			// save message to hdfs
 			new Thread() {
 				public void run() {
@@ -77,12 +77,14 @@ public class PendingData {
 //							HttpMessageStat hmStat = HttpHelper.getHttpMessageStat((HttpMessage) message, item.getMonitorFreq());
 //							messageMgr.saveHttpMessageStat(hmStat);
 //						} else {
+						 	HttpMessage httpMessage = (HttpMessage) message;
+						 	logger.info("POP HTTPMESSAGE:" + httpMessage);
 						 	
 							if (StringUtils.isNotEmpty(message.getServerIp())) {
 								message.setServerIp("");
-								messageMgr.saveHttpMessage((HttpMessage) message);
+								messageMgr.saveHttpMessage(httpMessage);
 							}
-							messageMgr.saveHttpMessage((HttpMessage) message);
+							messageMgr.saveHttpMessage(httpMessage);
 //						}
 						
 					} else if (message.getType() == Item.TYPE_PING) {

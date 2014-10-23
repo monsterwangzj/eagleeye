@@ -2,6 +2,9 @@ package com.chengyi.eagleeye.model.message;
 
 import java.io.Serializable;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang.builder.ToStringStyle;
+
 public class Message implements Serializable {
 	private static final long serialVersionUID = -3259001020561572505L;
 
@@ -84,5 +87,9 @@ public class Message implements Serializable {
 	public void setCreateTime(long createTime) {
 		this.createTime = createTime;
 	}
-
+	
+	public String toString() {
+		return ToStringBuilder.reflectionToString(this, ToStringStyle.DEFAULT_STYLE);
+	}
+	
 }
