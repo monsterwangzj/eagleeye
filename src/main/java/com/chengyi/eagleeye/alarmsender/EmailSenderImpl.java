@@ -108,7 +108,7 @@ public class EmailSenderImpl implements EagleSender {
 	}
 
 	public static void main(String[] args) {
-		new EmailSenderImpl().sendMail("122.11.23.34 is down", "wangnewton@wo.com.cn");
+		new EmailSenderImpl().sendMail("wangnewton@wo.com.cn", "122.11.23.34 is down");
 	}
 
 	public static EagleSender getInstance() {
