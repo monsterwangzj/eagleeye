@@ -23,9 +23,9 @@
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-		<property name="url" value="jdbc:mysql://182.92.222.78:3306/eagleeyetest?useUnicode=true&amp;autoReconnect=true&amp;characterEncoding=gbk"></property>
+		<property name="url" value="jdbc:mysql://182.92.112.21:3366/eagleeyetest?useUnicode=true&amp;autoReconnect=true&amp;characterEncoding=gbk"></property>
 		<property name="username" value="wangnewton"></property>
-		<property name="password" value="Wzj123456789"></property>
+		<property name="password" value="wangnewton"></property>
 	</bean>
 
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
